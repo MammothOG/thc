@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/MammothOG/thc/issues"
   },
-  "homepage": "https://github.com/MammothOG/thc#readme"
+  "homepage": "https://github.com/MammothOG/thc#readme",
+  "dependencies": {
+    "zeromq": "^5.2.0"
+  }
 }
