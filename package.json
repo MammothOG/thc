@@ -1,0 +1,11 @@
+{
+  "name": "thc",
+  "version": "1.0.0",
+  "description": "Tv hub",
+  "main": "controler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Felix",
+  "license": "ISC"
+}
