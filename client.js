@@ -6,8 +6,8 @@ var zmq = require("zeromq"),
 SUBSCRIBER = "thc";
 
 // config
-ip = "192.168.0.27";
-port = "3000";
+ip = "127.0.0.1";
+port = "5555";
 
 // socket configuration
 sock.bindSync("tcp://"+ ip +":" + port);
@@ -18,7 +18,7 @@ var message = (msg) => {
   return [SUBSCRIBER, msg];
 };
 
-setTimeout(function() {
+setInterval(function() {
     var demand = playStream("https://www.youtube.com/watch?v=t8FBDgl8C7s&ab_channel=Onliner");
 
     console.log("message => ", demand);

@@ -4,7 +4,7 @@ var zmq = require("zeromq"),
 
 // constant
 IP = "127.0.0.1";
-PORT = "3000";
+PORT = "5555";
 SUBSCRIBER = "thc";
 
 // socket configuration
