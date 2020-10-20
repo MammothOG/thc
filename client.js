@@ -1,15 +1,17 @@
 const axios = require('axios');
 
 const data = {
-  content: {
+  session: 0, // 0(New session), 1, 2...
+  status: "play", // pause
+  move: "next", // previous, start, end
+  add: {
     service: "youtube", // local, twitch...
-    path: "https://www.youtube.com/watch?v=Kw5tC5nQMRY&t=102s&ab_channel=TheCodingTrain"
+    time: 0, // in second
+    file: "",
+    http: "",
   },
-  params: {
-    status: "stop" // run
-  }
 }
 
-axios.post('http://127.0.0.1:3000/api', data)
+axios.post('http://127.0.0.1:3000/remote', data)
 // using web
 //fetch("/api", options)
