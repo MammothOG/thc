@@ -3,12 +3,14 @@ const axios = require('axios');
 const data = {
   session: 0, // 0(New session), 1, 2...
   status: "play", // pause
-  move: "next", // previous, start, end
+  move: "next", // end
+  volume: 100, // 0 to 100
+  addmode: "play", // append
   media: {
     service: "youtube", // local, twitch...
     start_time: 0, // in second
     file: "",
-    http: "",
+    http: "https://www.youtube.com/watch?v=fWNaR-rxAic&ab_channel=CarlyRaeJepsenVEVO",
   },
 }
 
