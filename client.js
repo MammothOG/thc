@@ -2,14 +2,15 @@ const axios = require('axios');
 
 const data = {
   session: 0, // 0(New session), 1, 2...
-  status: "play", // pause
-  move: "next", // end
-  volume: 100, // 0 to 100
-  addmode: "play", // append
+  status: "play", // pause, play
+  move: "next", // end, next
+  volume: 70, // 0 to 100
+  addmode: "append", // append, play(default)
+  //time: 0,
   media: {
     service: "youtube", // local, twitch...
-    start_time: 0, // in second
-    file: "",
+    starttime: 0, // in second TODO checking integrity of data
+    //file: "",
     http: "https://www.youtube.com/watch?v=fWNaR-rxAic&ab_channel=CarlyRaeJepsenVEVO",
   },
 }
