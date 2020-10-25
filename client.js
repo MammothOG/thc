@@ -2,10 +2,10 @@ const axios = require('axios');
 
 const data = {
   session: 0, // 0(New session), 1, 2...
-  status: "play", // pause, play
-  move: "next", // end, next
-  volume: 70, // 0 to 100
-  addmode: "append", // append, play(default)
+  //status: "pause", // pause, play
+  //move: "next", // end, next
+  //volume: 100, // 0 to 100
+  addmode: "play", // append, play(default)
   //time: 0,
   media: {
     service: "youtube", // local, twitch...
