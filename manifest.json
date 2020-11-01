@@ -1,0 +1,6 @@
+{
+    "name": "TV Hub Controller",
+    "version": "0.1",
+    "description": "Remote for the tv hub server",
+    "manifest_version": 2
+  }
