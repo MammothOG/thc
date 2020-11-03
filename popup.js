@@ -5,24 +5,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function onPlay() {
         if (buttonPlay.innerHTML === "pause") {
-            console.log("click pause");
             chrome.runtime.sendMessage({ status: "pause" });
             buttonPlay.innerHTML = "play";
         }
         else {
-            console.log("click play");
             chrome.runtime.sendMessage({ status: "play" });
             buttonPlay.innerHTML = "pause";
         }
     }
 
     function onNext() {
-        console.log("click next");
         chrome.runtime.sendMessage({move: "next"});
     }
 
     function onPrevious() {
-        console.log("click previous");
         chrome.runtime.sendMessage({move: "previous"});
     }
 
