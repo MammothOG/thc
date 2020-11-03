@@ -3,6 +3,10 @@
     "name": "TV Hub Controller",
     "version": "0.1",
     "description": "Remote for the tv hub server",
+    "permissions": [
+      "tabs",
+      "http://localhost:3000/*"
+    ],
     "content_scripts": [
       {
       "matches": ["https://www.youtube.com/watch?v=*"],

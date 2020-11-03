@@ -9,27 +9,33 @@ const waitElement = (selector) => {
   });
 }
 
-function sendMedia(mode) {
-  let msg = {
-    media: { 
-      service: "youtube",
-      path: "url"
+
+const sendMedia = (mode) => {
+    let msg = {
+      addmode: mode,
+      media: {
+        service: "youtube",
+        path: window.location.href,
+      }
     }
-  }
-  msg.addmode = mode;
-  chrome.runtime.sendMessage(msg)
+    chrome.runtime.sendMessage(msg)
 }
 
-function onAdd() { sendMedia("add"); }
-function onPlay() { sendMedia("play"); }
+const onPlay = () => { sendMedia("play"); }
+const onAddNext = () => { sendMedia("addnext")}
+const onAddPlaylist = () => { sendMedia("addplaylist"); }
 
 let buttonPlay = document.createElement("button");
 buttonPlay.addEventListener("click", onPlay, false)
 buttonPlay.innerHTML = "play";
 
-let buttonAdd = document.createElement("button");
-buttonAdd.addEventListener("click", onAdd, false)
-buttonAdd.innerHTML = "add";
+let buttonAddPlaylist = document.createElement("button");
+buttonAddPlaylist.addEventListener("click", onAddPlaylist, false)
+buttonAddPlaylist.innerHTML = "add to playlist";
+
+let buttonAddNext = document.createElement("button");
+buttonAddNext.addEventListener("click", onAddNext, false)
+buttonAddNext.innerHTML = "play next";
 
 (async () => {
 
@@ -37,5 +43,7 @@ buttonAdd.innerHTML = "add";
   console.log(parentNode);
 
   parentNode.appendChild(buttonPlay)
-  parentNode.appendChild(buttonAdd)
+  //parentNode.appendChild(buttonAddNext)
+  parentNode.appendChild(buttonAddPlaylist)
+
 })()
