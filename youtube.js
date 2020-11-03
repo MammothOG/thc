@@ -1,6 +1,8 @@
-console.log("youtube content loaded");
+let bar = document.getElementsByTagName("ytd-video-primary-info-renderer");
+console.log(bar);
 
-let bar = document.getElementById("top-level-buttons");
-let addButton = document.createButton("button");
-addButton.innerHTML = "add";
-bar.appendChild(addButton);
+let button = document.createElement("button");
+button.innerHTML = "play";
+button.id = "button-play";
+
+bar.appendChild(button);

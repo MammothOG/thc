@@ -5,7 +5,7 @@
     "description": "Remote for the tv hub server",
     "content_scripts": [
       {
-      "matches": ["https://www.youtube.com/*"],
+      "matches": ["https://www.youtube.com/watch?v=*"],
       "js" : ["youtube.js"]
       }
     ],
