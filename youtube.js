@@ -12,18 +12,18 @@ const waitElement = (selector) => {
 
 const sendMedia = (mode) => {
     let msg = {
-      addmode: mode,
       media: {
         service: "youtube",
+        position: mode,
         path: window.location.href,
       }
     }
     chrome.runtime.sendMessage(msg)
 }
 
-const onPlay = () => { sendMedia("play"); }
-const onAddNext = () => { sendMedia("addnext")}
-const onAddPlaylist = () => { sendMedia("addplaylist"); }
+const onPlay = () => { sendMedia("now"); }
+const onAddNext = () => { sendMedia("next")}
+const onAddPlaylist = () => { sendMedia("end"); }
 
 let buttonPlay = document.createElement("button");
 buttonPlay.addEventListener("click", onPlay, false)

@@ -5,21 +5,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function onPlay() {
         if (buttonPlay.innerHTML === "pause") {
-            chrome.runtime.sendMessage({ status: "pause" });
+            chrome.runtime.sendMessage({ action: "pause" });
             buttonPlay.innerHTML = "play";
         }
         else {
-            chrome.runtime.sendMessage({ status: "play" });
+            chrome.runtime.sendMessage({ action: "play" });
             buttonPlay.innerHTML = "pause";
         }
     }
 
     function onNext() {
-        chrome.runtime.sendMessage({move: "next"});
+        chrome.runtime.sendMessage({ action: "next"});
     }
 
     function onPrevious() {
-        chrome.runtime.sendMessage({move: "previous"});
+        chrome.runtime.sendMessage({ action: "previous"});
     }
 
     buttonPlay.addEventListener('click', onPlay, false)
