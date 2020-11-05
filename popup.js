@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let inputIp = document.getElementById('ip');
+    let buttonAddIp = document.getElementById("add-ip");
+
     let buttonPlayPause = document.getElementById('play');
     let buttonPrevious = document.getElementById('previous');
     let buttonNext = document.getElementById('next');
@@ -7,12 +9,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let buttonStop = document.getElementById('stop');
     let buttonConnect = document.getElementById('connection');
 
-    function send(request, path) {
+    function send(request, type) {
         let msg = {
-            api: path,
+            type: type,
             content: request,
         }
         chrome.runtime.sendMessage(msg);
+    }
+
+    function onAddIp() {
+        chrome.runtime.sendMessage({ ip_server: inputIp.innerHTML }, "addip");
     }
 
     function onPlayPause() {
@@ -26,13 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
     function onNext() { send({ action: "next"}, 'remote'); }
     function onPrevious() { send({ action: "previous"}, 'remote'); } 
     function onStop() { send({ action: "stop"}, 'remote'); } 
     function onClearPlaylist() { send({ action: "clearplaylist"}, 'remote'); } 
-
-    //buttonConnect.addEventListener('click', onConnect, false);
+    
+    buttonAddIp.addEventListener('click', onAddIp, false)
     buttonPlayPause.addEventListener('click', onPlayPause, false);
     buttonPrevious.addEventListener('click', onPrevious, false);
     buttonNext.addEventListener('click', onNext, false);

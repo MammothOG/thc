@@ -9,17 +9,32 @@ let xhr = new XMLHttpRequest();
 
 console.log("connected to port :", PORT);
 
-const postJson = (message) => {
-		console.log('send to :', url(ip, message.api))
+const postServer = (message, path) => {
+	let urlAddr = url(ip, path);
+	console.log('send to :', urlAddr);
 
-		xhr.open("POST", url(ip, message.api), true);
-		xhr.setRequestHeader("Content-type", "application/json");
-		xhr.send(JSON.stringify(message.content));
+	xhr.open("POST", urlAddr, true);
+	xhr.setRequestHeader("Content-type", "application/json");
+	xhr.send(JSON.stringify(message));
+}
+
+const connectServer = (message) => {
+	ip = message.content.ip_server;
+	postServer(message.content, "connection/")
 }
 
 chrome.runtime.onMessage.addListener(
 	(message, sender, sendResponse) => {
-		console.log("click :", message);
-		postJson(message);
+	console.log("click :", message);
+		switch (message.type) {
+			case "remote":
+				postServer(message.content, "remote/");
+				break;
+			case "addip":
+				break;
+			default:
+				break;
+		}
+		//postServer(message);
 	}
 )
