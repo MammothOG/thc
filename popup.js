@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function send(request, path) {
         let msg = {
-            ip: inputIp.value,
             api: path,
             content: request,
         }

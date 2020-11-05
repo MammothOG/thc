@@ -10,20 +10,24 @@ const waitElement = (selector) => {
 }
 
 
-const sendMedia = (mode) => {
-    let msg = {
-      media: {
-        service: "youtube",
-        position: mode,
-        path: window.location.href,
-      }
+const sendMedia = (mode, path) => {
+  let req = {
+    media: {
+      service: "youtube",
+      position: mode,
+      path: window.location.href,
     }
-    chrome.runtime.sendMessage(msg)
+  }
+  let msg = {
+    api: path,
+    content: req,
+  }
+  chrome.runtime.sendMessage(msg)
 }
 
-const onPlay = () => { sendMedia("now"); }
-const onAddNext = () => { sendMedia("next")}
-const onAddPlaylist = () => { sendMedia("end"); }
+const onPlay = () => { sendMedia("now", "remote"); }
+const onAddNext = () => { sendMedia("next", "remote")}
+const onAddPlaylist = () => { sendMedia("end", "remote"); }
 
 let buttonPlay = document.createElement("button");
 buttonPlay.addEventListener("click", onPlay, false)

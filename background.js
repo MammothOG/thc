@@ -10,8 +10,9 @@ let xhr = new XMLHttpRequest();
 console.log("connected to port :", PORT);
 
 const postJson = (message) => {
-		console.log(url(ip, message.api))
-		xhr.open("POST", url(message.ip, message.api), true);
+		console.log('send to :', url(ip, message.api))
+
+		xhr.open("POST", url(ip, message.api), true);
 		xhr.setRequestHeader("Content-type", "application/json");
 		xhr.send(JSON.stringify(message.content));
 }
