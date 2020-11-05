@@ -1,21 +1,24 @@
 console.log("background is running");
 
-let ip = "localhost";
-let port = 3000;
-const apiUrl = "http://" + ip + ":" + port + "/remote";
-console.log("connected to :", apiUrl);
+let PORT = 3000;
+const url = (ip, path) => {return "http://" + ip + ":" + PORT + "/" + path}
+
+let ip = "192.168.1.49"
 
 let xhr = new XMLHttpRequest();
 
-const postJson = (jsonData) => {
-		xhr.open("POST", apiUrl, true);
-		xhr.setRequestHeader("Content-type", "application/json")
-		xhr.send(JSON.stringify(jsonData))
+console.log("connected to port :", PORT);
+
+const postJson = (message) => {
+		console.log(url(ip, message.api))
+		xhr.open("POST", url(message.ip, message.api), true);
+		xhr.setRequestHeader("Content-type", "application/json");
+		xhr.send(JSON.stringify(message.content));
 }
 
 chrome.runtime.onMessage.addListener(
-	(request, sender, sendResponse) => {
-		console.log("click :", request);
-		postJson(request);
+	(message, sender, sendResponse) => {
+		console.log("click :", message);
+		postJson(message);
 	}
 )
