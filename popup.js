@@ -17,8 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
         chrome.runtime.sendMessage(msg);
     }
 
-    function onAddIp() {
-        chrome.runtime.sendMessage({ ip_server: inputIp.innerHTML }, "addip");
+    function onNewIp() {
+        if (!inputIp.value) {
+            console.error("Error: No value specified!");
+            return
+        }
+        chrome.storage.local.set({server_ip: inputIp.value}, () => {
+            console.log("Ip", inputIp, "has been saved.");
+        });
     }
 
     function onPlayPause() {
@@ -37,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function onStop() { send({ action: "stop"}, 'remote'); } 
     function onClearPlaylist() { send({ action: "clearplaylist"}, 'remote'); } 
     
-    buttonAddIp.addEventListener('click', onAddIp, false)
+    buttonAddIp.addEventListener('click', onNewIp, false)
     buttonPlayPause.addEventListener('click', onPlayPause, false);
     buttonPrevious.addEventListener('click', onPrevious, false);
     buttonNext.addEventListener('click', onNext, false);

@@ -18,11 +18,6 @@ const postServer = (message, path) => {
 	xhr.send(JSON.stringify(message));
 }
 
-const connectServer = (message) => {
-	ip = message.content.ip_server;
-	postServer(message.content, "connection/")
-}
-
 chrome.runtime.onMessage.addListener(
 	(message, sender, sendResponse) => {
 	console.log("click :", message);
@@ -30,11 +25,14 @@ chrome.runtime.onMessage.addListener(
 			case "remote":
 				postServer(message.content, "remote/");
 				break;
-			case "addip":
-				break;
 			default:
 				break;
 		}
-		//postServer(message);
 	}
-)
+);
+
+chrome.storage.onChanged.addListener((changes, areaName) => {
+	if (areaName === "local") {
+		console.log(changes, areaName);
+	}
+});
