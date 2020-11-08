@@ -4,7 +4,6 @@
     "version": "0.1",
     "description": "Remote for the tv hub server",
     "permissions": [
-      "tabs",
       "storage",
       "http://localhost:3000/*"
     ],
@@ -18,7 +17,7 @@
       "scripts": ["background.js"]
     },
     "browser_action": {
-      "default_popup": "popup.html",
+      "default_popup": "setup.html",
       "default_title": "TV Hub controller"
     }
   }
