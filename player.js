@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let buttonNext = document.getElementById('next');
     let buttonClearPlaylist = document.getElementById('clear-playlist');
     let buttonStop = document.getElementById('stop');
-    let buttonConnect = document.getElementById('connection');
 
     function send(request, type) {
         console.log("Request sended toward background :", request);

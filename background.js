@@ -10,6 +10,7 @@ let xhr = new XMLHttpRequest();
 xhr.onerror = () => {
 	console.warn('Warning: Server is unreachable!');
 	isConnected = false;
+	chrome.browserAction.setPopup("./player.html")
 }
 xhr.onload = () => {
 	console.log('Sended toward server with success!')
@@ -40,6 +41,7 @@ chrome.runtime.onMessage.addListener(
 
 		} else {
 			console.warn('Warning: Server not connected!');
+			chrome.browserAction.setPopup({popup: "./player.html"})
 		}
 	}
 );
